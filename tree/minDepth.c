@@ -13,17 +13,15 @@ struct TreeNode {
     struct TreeNode *left;
     struct TreeNode *right;
 };
-#define max(a,b) ((a) > (b) ? (a) : (b))
+#define min(a,b) ((a) > (b) ? (a) : (b))
 #define MAX_INT ((unsigned)(-1)>>1)
-#define MIN_INT (~MAX_INT)
-
 
 void traverse(struct TreeNode *root, int level, int *num)
 {
 
     if (!root->left && !root->right)
     {
-        *num = max(*num, level);
+        *num = min(*num, level);
         return;
     }
 
@@ -38,8 +36,8 @@ void traverse(struct TreeNode *root, int level, int *num)
 }
 
 
-int maxDepth(struct TreeNode* root) {
-    int num = MIN_INT;
+int minDepth(struct TreeNode* root) {
+    int num = MAX_INT;
 
     if (NULL == root) 
         return 0;
