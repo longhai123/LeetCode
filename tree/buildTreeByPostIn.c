@@ -23,20 +23,20 @@ int searchTreeNode(int *inorder, int inorderSize, int key)
     return -1;
 }
 
-struct TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize) {
+struct TreeNode* buildTree(int* postorder, int postorderSize, int* inorder, int inorderSize) {
 
-    if (preorder == NULL  || inorder == NULL || preorderSize == 0 || inorderSize == 0)
+    if (postorder == NULL  || inorder == NULL || postorderSize == 0 || inorderSize == 0)
         return NULL;
 
     struct TreeNode *root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
 
-    int index = searchTreeNode(inorder, inorderSize, preorder[0]);
+    int index = searchTreeNode(inorder, inorderSize, postorder[postorderSize - 1]);
     if (-1 == index)
         return NULL;
 
-    root->val = preorder[0];
-    root->left = buildTree(preorder+1, index, inorder, index);
-    root->right = buildTree(preorder+index+1, preorderSize-index-1, inorder+index+1, preorder-index-1);
+    root->val = postorder[postorderSize - 1];
+    root->left = buildTree(postorder, index, inorder, index);
+    root->right = buildTree(postorder+index, postorderSize-index-1, inorder+index+1, postorder-index-1);
 
     return root;
 }
