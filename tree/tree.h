@@ -8,10 +8,11 @@ struct TreeNode
     struct TreeNode *right;
 };
 
-void createTree(struct TreeNode **root);
+void createTreePre(struct TreeNode **root);
 void preOrderTraverse(struct TreeNode *root);
 void inOrderTraverse(struct TreeNode *root);
 void postOrderTraverse(struct TreeNode *root);
+int maxDistance(struct TreeNode *root);
 
 
 #endif

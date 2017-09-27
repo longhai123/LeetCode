@@ -2,7 +2,7 @@
 #include <malloc.h>
 #include "tree.h"
 
-void createTree(struct TreeNode **root)
+void createTreePre(struct TreeNode **root)
 {
     int i;
 
@@ -16,8 +16,8 @@ void createTree(struct TreeNode **root)
     {
         *root = (struct TreeNode *)malloc(sizeof(struct TreeNode));
         (*root)->val = i;
-        createTree(&(*root)->left);
-        createTree(&(*root)->right);
+        createTreePre(&(*root)->left);
+        createTreePre(&(*root)->right);
     }
 }
 
