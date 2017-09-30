@@ -24,11 +24,37 @@ void bubble_sort(int a[], int n)
     }
 }
 
+void selection_sort(int a[], int n)
+{
+    int i, j, index;
+    int tmp;
+
+    for (i = 0; i < n - 1; i++)
+    {
+        int index = i;
+        for (j = i + 1; j < n; j++)
+        {
+            if (a[j] < a[index])
+            {
+                index = j;
+            }
+        }
+
+        if (i != index)
+        {
+            tmp = a[i];
+            a[i] = a[index];
+            a[index] = tmp;
+        }
+    }
+}
+
 
 int  main()
 {
     int num[8] = {89, 38, 11, 78, 96, 44, 19, 25};
-    bubble_sort(num, 8);
+    /* bubble_sort(num, 8); */
+    selection_sort(num, 8);
     for(int i=0; i<8; i++)
         printf("%d  ", num[i]);
     printf("\n");
