@@ -49,12 +49,25 @@ void selection_sort(int a[], int n)
     }
 }
 
+void insertionSort(int a[], int N) {
+    int i, j;
+    int X = 0;
+    for (i = 1; i < N; i++) { // O(N)
+        X = a[i]; // X is the item to be inserted
+        for (j = i-1; j >= 0 && a[j] > X; j--) // can be fast or slow
+            a[j+1] = a[j]; // make a place for X
+        a[j+1] = X; // this is the insertion point
+    }
+
+}
+
 
 int  main()
 {
     int num[8] = {89, 38, 11, 78, 96, 44, 19, 25};
     /* bubble_sort(num, 8); */
-    selection_sort(num, 8);
+    /* selection_sort(num, 8); */
+    insertionSort(num, 8);
     for(int i=0; i<8; i++)
         printf("%d  ", num[i]);
     printf("\n");
